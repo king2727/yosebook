@@ -1,0 +1,30 @@
+@startuml
+
+class UserController {
+    login(User user)
+    regist(User user)
+    activation(String activationCode)
+    quit()
+    updatePassword(User user)
+}
+
+class UserService{
+	updatePassword(uid,oldPass,newPass)
+	login(User user)
+	activation(String code)
+	regist(User user)
+}
+
+UserController --> UserService
+UserService --> UserDao
+
+interface UserDao {
+	findByUidAndLoginpass(map)
+	updateLoginpass(map)
+	findByLoginnameAndLoginpass(map)
+	findByCode(code)
+	updateStatus(map)
+	add(User user)
+}
+UserDao --> User
+@enduml
