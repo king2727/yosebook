@@ -58,15 +58,7 @@ public class OrderController{
 		map.addAttribute("order", orderService.load(oid));
 		return "/jsps/order/pay";
 	}
-	
-	/**
-	 * 支付方法
-	 * @param req
-	 * @param resp
-	 * @return
-	 * @throws ServletException
-	 * @throws IOException
-	 */
+
 	@RequestMapping("/payment.do")
 	public String payment(String oid,String total,String yh) throws IOException{
 		Properties props = new Properties();

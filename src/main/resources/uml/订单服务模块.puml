@@ -1,0 +1,66 @@
+@startuml
+
+class OrderController {
+paymentPre(oid) //1.提前支付订单
+payment(oid，total,yh)//2.支付订单
+back() //3.返回
+confirm(oid) // 4.确认订单
+cancel(oid)  // 5.取消订单
+load(oid,btn) //6.加载订单
+createOrder() //7.创建订单
+myOrders() //8.我的订单
+}
+
+OrderController --> OrderService
+OrderController --> CartItemService
+
+interface OrderService {
+	updateStatus(oid,status)//1.更新订单状态
+	findStatus(oid)//2.查询订单状态
+	load(oid)//3.加载订单
+	createOrder(order)//4.创建订单
+	myOrders(uid,pc)//5.我的订单
+	findAll(pc)//6.所有订单
+	findByStatus (stauts ,pc)//7.根据状态查找订单
+}
+
+OrderService --> OrderDao
+OrderService --> OrderItemDao
+
+interface OrderDao {
+    updateStatus(map) //1.更新订单状态
+	findStatus(oid) //2.查询订单状态
+	load(oid)   //3.加载订单
+	add(map)    //4.创建订单
+	findByStatus(map) //5.根据状态查找订单
+	findByUser(map) //6.根据用户查找订单
+	findAll(map) // 7.所有订单
+	findOrderTr(map) //8.查询订单
+}
+class Order{
+	oid //订单ID
+	ordertime //下单时间
+	total //金额
+	status//订单状态
+	address //地址
+	owner//订单拥有者
+	orderItemList//商品列表
+}
+
+OrderDao --> Order
+
+interface OrderItemDao {
+	findByOid(oid) //根据订单查找商品
+	load(orderItemId) //加载商品
+	addOrderItem(mapList) //添加商品
+}
+OrderItemDao --> OrderItem
+class OrderItem{
+	orderItemId //商品ID
+	quantity //数量
+	subtotal //金额
+	book //书本
+	order//从属订单
+}
+OrderItem --> Book
+@enduml

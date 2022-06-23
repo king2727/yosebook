@@ -1,0 +1,35 @@
+@startuml
+
+class CategoryController {
+	findAll() //查找所有类别
+}
+CategoryController --> CategoryService
+interface CategoryService {
+    findAll() //查找所有类别
+	delete(cid) //删除类别
+	findParents() //查找父类别
+	findChildrenByParent(pid)//根据父类查找子类
+	findByParent(String pid)//根据父类查找
+	edit(category) //修改类别
+	load(cid) //加载类别
+	add(category) //添加类别
+}
+CategoryService --> CategoryDao
+interface CategoryDao {
+	load(cid) //加载类别
+	findByParent(String pid)//根据父类查找
+	findParents() //查找父类别
+	add(category) //添加类别
+	edit(category) //修改类别
+	findChildrenByParent(pid)//根据父类查找子类
+	delete(cid) //删除类别
+}
+class Category{
+	cid //分类主键
+	cname  //分类名
+	parent //父分类
+	desc //描述
+	children  //子分类
+}
+CategoryDao --> Category
+@enduml

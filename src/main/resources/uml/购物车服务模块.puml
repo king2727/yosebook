@@ -1,0 +1,40 @@
+@startuml
+class CartItemController{
+	loadCartItems(String total)//1.加载商品根据ID
+	updateQuantity(）//2.更新数量
+	batchDelete(）//3.批次删除根据IDS
+	add(）//4.添加商品
+	myCart(）//5.我的购物车
+}
+
+CartItemController --> CartItemService
+
+interface CartItemService {
+	loadCartItems(cartItemIds)//1.加载商品根据ID
+	updateQuantity()//2.更新数量
+	batchDelete(cartItemIds)//3.批次删除根据IDS
+	add(cartItem)//4.添加商品
+	myCart(String uid)//5.我的购物车
+}
+
+CartItemService --> CartItemDao
+
+interface CartItemDao {
+	loadCartItems(Id)//1.加载商品根据ID
+	findByCartItemId(Id)//2.查询商品根据ID
+	bacthDelete(Ids)//3.批次删除根据IDS
+	findByUidAndBid(map)//4.查询根据UID和BID
+	updateQuantity(map)//5.更新数量
+	addCartItem(map)//6.添加商品进购物车
+	findByUser(String uid)//7.查询根据用户
+}
+CartItemDao --> CartItem
+
+class CartItem {
+	cartItemId;//主键
+	quantity;  //数量
+	book;  //条目图书
+	user;  //条目用户
+}
+
+@enduml

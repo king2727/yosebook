@@ -1,0 +1,57 @@
+@startuml
+
+class BookController {
+    load(String bid)//1.加载书本
+    findByCategory()//2.根据类别查找
+    findByAuthor()//3.根据作者查找
+    findByPress()//4.
+    findByBname()//5.根据书名查找
+    findByConbination()//6.根据
+}
+interface BookService {
+    load(String bid)//1.加载书本
+    findByCategory(String cid, int pc)//2.根据类别查找
+    findBookCountByCategory(cid)//3.统计数量根据类别
+	findByAuthor(author, int pc)4.查找根据作者
+	findByPress(press, int pc)//5.查找根据
+	findByBname(bname, int pc)//6.查询根据书名
+	findByConbination(criteria, int pc)//7.查询根据
+	addBook(book)//8.添加书本
+	edit(book)//9.修改书本
+	delete(bid)//10.删除书本
+}
+BookController --> BookService
+BookService --> BookDao
+interface BookDao {
+	findBookTr(map)//1.查找书本
+	delete(String bid)//2.删除
+	edit(map)//3.修改
+	add(map)//4.添加
+	findBookCountByCategory(cid)//5.统计数量根据类别
+	findByBid(String bid)//6.查询根据主键
+	findByCategory(map)//7.查询根据类别
+	findByBname(map)//8.查询根据书名
+	findByAuthor(map)//9.查询根据作者
+	findByPress(map)//10.
+	findByCombination(map)//11.
+	findByCriteria(map)//12.
+}
+BookDao --> Book
+class Book{
+	bid//书本主键
+	bname//书名
+	author//作者
+	price//价格
+	currPrice//当前价格
+	discount//折扣
+	press//
+	publishtime//出版时间
+	edition//编辑
+	pageNum//书页
+	wordNum//字数
+	printtime//打印时间
+	booksize//书大小
+	paper//纸张
+	category//类别
+}
+@enduml
