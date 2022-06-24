@@ -16,32 +16,23 @@
 </head>
 
 <body>
-    <%-- <header>
-        <img src="<c:url value='/images/ybig_logo.png'/>">
-    </header> --%>
     <table class="table" align="center" style="border-radius: 3px;">
         <tr class="trTop">
-            <td colspan="2" class="tdTop"><iframe frameborder="0"
-                    src="<c:url value='/jsps/top.jsp'/>" name="top"></iframe>
+            <td colspan="2" class="tdTop">
+                <iframe frameborder="0" src="<c:url value='/jsps/top.jsp'/>" name="top"></iframe>
             </td>
         </tr>
-
-
         <tr>
-            <td class="tdLeft" rowspan="2"><iframe frameborder="0"
-                    src="<c:url value='/category/findAll.do'/>" name="left"></iframe>
+            <td class="tdLeft" rowspan="2">
+                <iframe frameborder="0" src="<c:url value='/category/findAll.do'/>" name="left"></iframe>
             </td>
             <td class="tdSearch" style="border-bottom-width: 0px;">
-                <iframe frameborder="0"
-                    src="<c:url value='/jsps/search.jsp'/>"
-                    name="search"></iframe>
+                <iframe frameborder="0" src="<c:url value='/jsps/search.jsp'/>" name="search"></iframe>
             </td>
         </tr>
-
         <tr>
-            <td style="border-top-width: 0px;"><iframe
-                    frameborder="0"
-                    src="<c:url value='/jsps/body.jsp'/>" name="body"></iframe>
+            <td style="border-top-width: 0px;">
+                <iframe frameborder="0" src="<c:url value='/jsps/body.jsp'/>" name="body"></iframe>
             </td>
         </tr>
     </table>

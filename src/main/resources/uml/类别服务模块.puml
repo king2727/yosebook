@@ -1,0 +1,22 @@
+@startuml
+
+class CategoryController {
+	findAll() //1.查找所有类别
+}
+CategoryController --> CategoryService
+interface CategoryService {
+    findAll() //1.查找所有类别
+}
+CategoryService --> CategoryDao
+interface CategoryDao {
+	findParents() //1.查找父类别
+}
+CategoryDao --> Category
+class Category{
+	cid //分类主键
+	cname  //分类名
+	parent //父分类
+	desc //描述
+	children  //子分类
+}
+@enduml

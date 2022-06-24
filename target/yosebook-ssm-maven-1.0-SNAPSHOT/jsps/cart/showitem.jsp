@@ -85,9 +85,8 @@
                 </td>
             </tr>
             <tr>
-                <td style="border-top-width: 4px;" colspan="5"
-                    align="right"><a id="linkSubmit"
-                    href="javascript:$('#form1').submit();">提交订单</a></td>
+                <td style="border-top-width: 4px;" colspan="5" align="right">
+                    <a  href="javascript:$('#form1').submit();"> 提交订单 </a></td>
             </tr>
         </table>
     </form>
