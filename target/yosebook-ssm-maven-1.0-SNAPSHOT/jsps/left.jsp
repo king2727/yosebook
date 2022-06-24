@@ -37,7 +37,7 @@
 		<c:forEach items="${parents}" var="parent">
 
     		<c:forEach items="${parent.children}" var="child">
-				bar.add("${parent.cname}", "${child.cname}", "/yosebook_ssm_maven_war_exploded/book/findByCategory.do?cid=${child.cid}", "body");
+				bar.add("${parent.cname}", "${child.cname}", "/book/findByCategory.do?cid=${child.cid}", "body");
     		</c:forEach>
 
 		</c:forEach>

@@ -1,0 +1,15 @@
+@startuml
+
+class AdminController {
+    quit()//1.退出
+    login(name,pwd)//2.登陆
+}
+AdminController --> AdminService
+interface AdminService {
+    findByAdminnameAndAdminpwd(name, pwd)//2.登陆
+}
+AdminService --> AdminDao
+interface AdminDao {
+    findByAdminnameAndAdminpwd()//2.登陆
+}
+@enduml

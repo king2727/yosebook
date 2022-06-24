@@ -24,6 +24,7 @@ interface CategoryDao {
 	findChildrenByParent(pid)//根据父类查找子类
 	delete(cid) //删除类别
 }
+CategoryDao --> Category
 class Category{
 	cid //分类主键
 	cname  //分类名
@@ -31,5 +32,4 @@ class Category{
 	desc //描述
 	children  //子分类
 }
-CategoryDao --> Category
 @enduml

@@ -1,0 +1,87 @@
+@startuml
+
+class AdminBookController{
+    addBook()//1.添加图书
+    delete(bid)//2.删除图书
+    edit(book,category)//3.修改类别
+    findCategoryAll()//4.
+    load()//5.
+    findByCategory()//6.
+    findByAuthor()//7.
+    findByPress()//8.
+    findByBname()//9.
+    findByConbination()//10.
+    addPre()//11.
+    ajaxFindChildren()//12.
+}
+AdminBookController --> CategoryService
+AdminBookController --> BookService
+interface CategoryService {
+    findParents()//1.1
+    findAll()//4.
+    findParents()//5.2
+    findByParent(pid)//5.3
+    findParents()//11.
+    findByParent(pid)//12.
+}
+interface BookService {
+    addBook()//1.2
+    load(bid)//2.1
+    delete(bid)//2.2
+    edit(book)//3.修改类别
+    load()//5.1
+    findByCategory(cid, pc)//6.
+    findByAuthor(author, pc)//7.
+    findByPress(press, pc)//8.
+    findByBname(bname, pc)//9.
+    findByConbination(book, pc)//10.
+}
+CategoryService --> CategoryDao
+BookService --> BookDao
+interface CategoryDao {
+    findParents()//1.1
+    findAll()//4.
+    findParents()//5.2
+    findByParent(pid)//5.3
+    findParents()//11
+    findByParent(pid)//12.
+}
+interface BookDao {
+    add(map)//1.2
+    findByBid(bid)//2.1
+    delete(bid)//2.2
+    edit(map)//3.
+    findByBid(bid)//5.1
+    findByCategory(map)//6.
+    findByAuthor(map)//7.
+    findByPress(map)//8.
+    findByBname(map)//9.
+    findByCombination(map)//10.
+}
+CategoryDao --> Category
+BookDao --> Book
+class Category{
+	cid //分类主键
+	cname  //分类名
+	parent //父分类
+	desc //描述
+	children  //子分类
+}
+ class Book{
+ 	bid//书本主键
+ 	bname//书名
+ 	author//作者
+ 	price//价格
+ 	currPrice//当前价格
+ 	discount//折扣
+ 	press//
+ 	publishtime//出版时间
+ 	edition//编辑
+ 	pageNum//书页
+ 	wordNum//字数
+ 	printtime//打印时间
+ 	booksize//书大小
+ 	paper//纸张
+ 	category//类别
+ }
+@enduml

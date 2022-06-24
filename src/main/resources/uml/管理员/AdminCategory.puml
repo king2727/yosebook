@@ -1,0 +1,79 @@
+@startuml
+
+class AdminCategoryController {
+    findAll()//1.查找所有
+    addParent(parent)//2.添加父类
+    addChildPre()//3.
+    addChild()//4.
+    editParentPre()//5.
+    editParent(category)//6.
+    editChildPre(cid)//7.
+    editChild()//8.
+    deleteParent()//9.
+    deleteChild(cid)//10.
+}
+AdminCategoryController --> CategoryService
+AdminCategoryController --> BookService
+interface CategoryService {
+    findAll()//1.查找所有
+    add(parent)//2.添加父类
+    findParents()//3.
+    add(child)//4.
+    load(cid)//5.
+    edit(category)//6.
+    load(cid)//7.1
+    findParents()//7.2
+    edit(category)//8.
+    findChildrenByParent(cid)//9.1
+    delete(cid)//9.2
+    delete(cid)//10.2
+}
+interface BookService {
+    findBookCountByCategory(cid)//10.1
+}
+BookService --> BookDao
+CategoryService --> CategoryDao
+interface BookDao {
+    findBookCountByCategory(cid)//10.1
+}
+interface CategoryDao {
+    findParent()//1.查找所有
+    add(map)//2.
+    findParent()//3.
+    add(map)//4.
+    load(cid)//5.
+    edit(map)//6.
+    load(cid)//7.1
+    findParent()//7.2
+    edit(map)//8.
+    findChildrenByParent(pid)//9.1
+    delete(cid)//9.2
+    delete(cid)//10.2
+}
+CategoryDao --> Category
+class Category{
+	cid //分类主键
+	cname  //分类名
+	parent //父分类
+	desc //描述
+	children  //子分类
+}
+BookDao --> Book
+class Book{
+	bid//书本主键
+	bname//书名
+	author//作者
+	price//价格
+	currPrice//当前价格
+	discount//折扣
+	press//
+	publishtime//出版时间
+	edition//编辑
+	pageNum//书页
+	wordNum//字数
+	printtime//打印时间
+	booksize//书大小
+	paper//纸张
+	category//类别
+}
+@enduml

@@ -26,5 +26,4 @@ public class AdminServiceImpl implements AdminService{
 			throw new RuntimeException(e);
 		}
 	}
-	
 }

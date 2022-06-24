@@ -1,0 +1,37 @@
+@startuml
+
+class AdminOrderController {
+    findAll()//1.查找所有
+    findByStatus()/2.根据状态查找
+    load()//3.加载
+    cancel()//4.取消
+    deliver()//5.递送
+}
+
+AdminOrderController --> OrderService
+
+Interface OrderService {
+    findAll()//1.查找所有
+    findByStatus()/2.根据状态查找
+    load()//3.加载
+    findStatus()//4.1查找状态
+    updateStatus()//4.2更新状态
+    findStatus()//5.1查找状态
+    updateStatus()//5.2更新状态
+}
+
+OrderService --> OrderDao
+
+interface OrderDao {
+    findAll(map) // 1.所有订单
+    findByStatus(map) //2.根据状态查找订单
+    load(oid)   //3.加载订单
+    findStatus(oid) //4.1.查询订单状态
+    updateStatus(map) //4.2.更新订单状态
+    findStatus(oid) //5.1.查询订单状态
+    updateStatus(map) //5.2.更新订单状态
+}
+
+
+
+@enduml
